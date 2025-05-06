@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started | SimpleSite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Animation for steps */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .step-card:nth-child(1) { animation-delay: 0.2s; }
+        .step-card:nth-child(2) { animation-delay: 0.4s; }
+        .step-card:nth-child(3) { animation-delay: 0.6s; }
+        .step-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        /* Pulse animation for CTA */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Custom checkbox */
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #10B981;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            margin-right: 10px;
+        }
+        
+        .custom-checkbox:checked {
+            background-color: #10B981;
+        }
+        
+        .custom-checkbox:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            position: absolute;
+            left: 3px;
+            top: 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-500 text-2xl mr-2"></i>
+                        <span class="font-bold text-xl text-gray-800">SimpleSite</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-green-500 px-3 py-2 font-medium">Home</a>
+                    <a href="feature.html" class="text-gray-500 hover:text-green-500 px-3 py-2 font-medium">Features</a>
+                    <a href="about.html" class="text-gray-500 hover:text-green-500 px-3 py-2 font-medium">About</a>
+                    <a href="contact.html" class="text-gray-500 hover:text-green-500 px-3 py-2 font-medium">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md font-medium transition-all duration-300 hover:shadow-md">
+                        <a href="getStart.html">Get Started</a>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-green-500">Home</a>
+                <a href="feature.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-green-500">Features</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-green-500">About</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-green-500">Contact</a>
+                <button class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-green-500 hover:bg-green-600 mt-2">
+                    <a href="getStart.html">Get Started</a>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-green-400 to-blue-500 py-20 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Create Your Website in Minutes</h1>
+            <p class="text-xl max-w-2xl mx-auto mb-8">No coding required. Beautiful templates. Easy to use.</p>
+            <button class="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-md font-medium transition-all duration-300 hover:shadow-lg pulse-animation">
+                Start Building Now <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Follow these simple steps to launch your website today</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="step-card bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-green-600 text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sign Up</h3>
+                    <p class="text-gray-600">Create your free account in just 30 seconds. No credit card required.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step-card bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-blue-600 text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Choose a Template</h3>
+                    <p class="text-gray-600">Select from our collection of professionally designed templates.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step-card bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-purple-600 text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Customize</h3>
+                    <p class="text-gray-600">Easily edit text, upload images, and personalize your design.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="step-card bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-yellow-600 text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Publish</h3>
+                    <p class="text-gray-600">Go live with one click and share your site with the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose SimpleSite?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Everything you need to build a professional website</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-magic text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Drag & Drop Builder</h3>
+                    <p class="text-gray-600">Easily create and customize your site with our intuitive drag-and-drop interface. No coding skills required.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Optimized</h3>
+                    <p class="text-gray-600">All our templates are fully responsive and look great on any device, from desktop to smartphone.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Fast Loading</h3>
+                    <p class="text-gray-600">Our optimized platform ensures your website loads quickly, improving user experience and SEO rankings.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Secure Hosting</h3>
+                    <p class="text-gray-600">Enjoy enterprise-grade security with SSL certificates, DDoS protection, and automatic backups.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Built-in Analytics</h3>
+                    <p class="text-gray-600">Track your visitors and understand your audience with our integrated analytics dashboard.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-indigo-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+                    <p class="text-gray-600">Our expert support team is available around the clock to help you with any questions or issues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Form -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-green-600 rounded-lg p-8 shadow-lg">
+                <div class="md:flex items-center justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+                        <p class="text-green-100">Join thousands of happy customers who've built their websites with SimpleSite.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <form class="space-y-4">
+                            <div>
+                                <input type="email" placeholder="Your email address" 
+                                       class="w-full px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-gray-900">
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Create a password" 
+                                       class="w-full px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-gray-900">
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="terms" class="custom-checkbox">
+                                <label for="terms" class="text-green-100 text-sm ml-2">
+                                    I agree to the <a href="#" class="underline">Terms of Service</a> and <a href="#" class="underline">Privacy Policy</a>
+                                </label>
+                            </div>
+                            <button type="submit" 
+                                    class="w-full bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-bold transition-all duration-300">
+                                Create Free Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Don't just take our word for it</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
+                            <p class="text-gray-600 text-sm">Small Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"I was able to create a professional website for my bakery in just one afternoon. The templates are beautiful and the editor is so easy to use!"</p>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Michael Chen</h4>
+                            <p class="text-gray-600 text-sm">Freelance Photographer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"As a photographer, having a beautiful portfolio was essential. SimpleSite made it effortless to showcase my work professionally."</p>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Emma Rodriguez</h4>
+                            <p class="text-gray-600 text-sm">Nonprofit Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Our nonprofit needed an affordable website solution. SimpleSite gave us everything we needed to share our mission with the world."</p>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-leaf text-green-500 text-2xl mr-2"></i>
+                        <span class="font-bold text-xl">SimpleSite</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Making the web beautiful, one site at a time.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">1234 Street Name</li>
+                        <li class="text-gray-400">City, ST 12345</li>
+                        <li class="text-gray-400">United States</li>
+                        <li class="text-gray-400">info@simplesite.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 SimpleSite. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Plan selection
+        document.querySelectorAll('.pricing-plan button').forEach(button => {
+            button.addEventListener('click', function() {
+                const planName = this.closest('.pricing-plan').querySelector('h3').textContent;
+                alert(`You've selected the ${planName} plan. Redirecting to signup...`);
+            });
+        });
+        
+        // Form submission
+        const signupForm = document.querySelector('form');
+        if (signupForm) {
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = signupForm.querySelector('input[type="email"]').value;
+                const termsChecked = signupForm.querySelector('#terms').checked;
+                
+                if (!termsChecked) {
+                    alert('Please agree to the Terms of Service and Privacy Policy');
+                    return;
+                }
+                
+                alert(`Thank you for signing up with email ${email}! Redirecting to your dashboard...`);
+                signupForm.reset();
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
